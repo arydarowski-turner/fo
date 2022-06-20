@@ -3,7 +3,9 @@
 namespace Drupal\auth_dash;
 
 use Drupal\Core\Datetime\DateFormatterInterface;
+use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Link;
+
 
 /**
  * AuthDashOutput service.
@@ -17,15 +19,22 @@ class AuthDashOutput {
    */
   protected $dateFormatter;
 
+  /*
+   * @var \Drupal\Core\Config\ConfigFactoryInterface;
+   */
+  protected $configFactory;
 
   /**
    * Constructs an AuthDashOutput object.
    *
    * @param \Drupal\Core\Datetime\DateFormatterInterface $date_formatter
    *   The date formatter.
+   *
+   * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
    */
-  public function __construct(DateFormatterInterface $date_formatter) {
+  public function __construct(DateFormatterInterface $date_formatter, ConfigFactoryInterface $config_factory) {
     $this->dateFormatter = $date_formatter;
+    $this->configFactory = $config_factory;
   }
 
   /**
@@ -41,9 +50,12 @@ class AuthDashOutput {
     $uid = $current_user->id();
     $account_page = '/user/' . $uid;
     $host = \Drupal::request()->getSchemeAndHttpHost();
+    $config = $this->configFactory->get('auth_dash.settings');
+    $welcome_message = $config->get('welcome_message');
+    $welcome_text = isset($welcome_message) ? '</br>' . $welcome_message : '';
 
 
-    return 'Hello ' . $user_display_name . '! <br> Your last log in was ' . $formatted_date . '. <br> <a href="'. $host . $account_page . '">Visit your profile </a>';
+    return 'Hello ' . $user_display_name . '! <br> Your last log in was ' . $formatted_date . '. <br> <a href="'. $host . $account_page . '">Visit your profile </a>' . $welcome_text;
   }
 
 }

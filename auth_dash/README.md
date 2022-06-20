@@ -10,6 +10,9 @@ Manual configuration steps:
 3. Uncheck 'Display Title'.
 4. Select the Role tab and check 'Authenticated user'. 
 5. Save the block.
+6. Navigate to /admin/config/system/auth-dash-config
+7. Add in optional welcome message and save.
+8. Clear cache
 
 Navigate to any non-administration screen such as the home page to view the block in the sidebar.
 

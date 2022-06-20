@@ -5,3 +5,11 @@ auth_dash.:
     _controller: '\Drupal\auth_dash\Controller\AuthDashController::build'
   requirements:
     _permission: 'administer content'
+
+auth_dash.auth_dash_config:
+  path: '/admin/config/system/auth-dash-config'
+  defaults:
+    _title: 'Dashboard Configuration'
+    _form: 'Drupal\auth_dash\Form\AuthDashConfig'
+  requirements:
+    _permission: 'administer site configuration'

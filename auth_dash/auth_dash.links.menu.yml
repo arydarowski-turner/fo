@@ -1,0 +1,6 @@
+auth_dash.auth_dash_config:
+  title: Dashboard Configuration
+  description: Configure Dashboard
+  parent: system.admin_config_system
+  route_name: auth_dash.auth_dash_config
+  weight: 10
