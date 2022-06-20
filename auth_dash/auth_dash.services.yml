@@ -1,0 +1,4 @@
+services:
+  auth_dash.output:
+    class: Drupal\auth_dash\AuthDashOutput
+    arguments: ['@date.formatter']

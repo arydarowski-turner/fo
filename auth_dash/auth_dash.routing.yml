@@ -1,0 +1,7 @@
+auth_dash.:
+  path: '/auth-dash/output'
+  defaults:
+    _title: 'Output'
+    _controller: '\Drupal\auth_dash\Controller\AuthDashController::build'
+  requirements:
+    _permission: 'administer content'

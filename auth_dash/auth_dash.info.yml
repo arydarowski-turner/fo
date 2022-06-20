@@ -1,0 +1,6 @@
+name: Auth Dashboard
+description: Provides a personalized dashboard for authenticated users.
+package: Custom
+
+type: module
+core: 8.x
